@@ -65,3 +65,35 @@ app.get("/confirm/:confirmationToken", async (req, res) => {
   }
   
 });
+
+//password reset
+
+const reset = require("./resetpassword/app.js")
+app.get("/password",(req,res)=>{
+  res.sendFile( __dirname + '/resetpassword/index.html');
+})
+
+app.post("/password",(req,res)=>{
+  
+  reset.password_reset(req , res,req.body.email)
+
+})
+
+app.get("/reset/:Token",(req,res)=>{
+  res.sendFile( __dirname  + '/resetpassword/reset.html')
+})
+app.post("/reset/:Token", async (req, res) => {
+  try {
+    const user = await confirmation.User.findOne({ id: req.params.Token });
+    if (!user) {
+      throw new Error("Invalid confirmation token");
+    }
+    user.password = req.body.password ;
+    
+    await user.save();
+    res.send("Password changed successfully");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+  
+});
