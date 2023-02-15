@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create my card</title>
+
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+        }
+  
+        label {
+          display: block;
+          margin-bottom: 10px;
+        }
+  
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+          font-size: 16px;
+          padding: 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          width: 100%;
+          box-sizing: border-box;
+          margin-bottom: 10px;
+        }
+  
+        select {
+          height: 40px;
+        }
+  
+        input[type="submit"] {
+          background-color: #4CAF50;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          text-align: center;
+        }
+  
+        input[type="submit"]:hover {
+          background-color: #45a049;
+        }
+        
+  
+        .form-container {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+          width: 50%;
+          margin: 0 auto;
+        }
+  
+        h1 {
+          text-align: center;
+        }
+      </style>
+
+</head>
+<body>
+    <div class="form-container">
+<h1>Create my card</h1>
+    <form method = "post">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name"><br><br>
+      
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name"><br><br>
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+      
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone"><br><br>
+      
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address"><br><br>
+      
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city"><br><br>
+      
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state"><br><br>
+      
+        <label for="zip">Zip Code:</label>
+        <input type="text" id="zip" name="zip"><br><br>
+      
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country"><br><br>
+      
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth"><br><br>
+      
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation"><br><br>
+      
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select><br><br>
+      
+        <input type="submit" value="Create">
+      </form>
+    </div>
+</body>
+</html>

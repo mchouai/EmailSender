@@ -97,3 +97,61 @@ app.post("/reset/:Token", async (req, res) => {
   }
   
 });
+
+//data extraction
+
+const { create_form } = require("./dataexports/data_app.js")
+const { generate_pdf } = require("./dataexports/pdf_generate.js")
+
+let person = {
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone: '',
+  address: '',
+  city: '',
+  state: '',
+  zip: '',
+  country: '',
+  date_of_birth: '',
+  occupation: '',
+  gender: ''
+};
+
+app.get('/addperson',(req,res)=>{
+  
+  res.sendFile(__dirname + "/dataexports/index.html")
+
+})
+
+app.post('/addperson',(req,res)=>{
+  person = {
+    ...person,
+    ...req.body
+    };
+create_form(person);
+generate_pdf(person);
+
+const options = {
+  from : "chazermed65@gmail.com",
+  to : person.email,
+  subject : "automatic generated card",
+  text : `Hey ${person.first_name}!\n  In attachement you find your card \n \n Thank you!!`,
+  attachments :  [{
+      filename  : "card.pdf",
+      path  : __dirname + "/card.pdf"
+  }]
+}
+
+mail.transporter.sendMail(options, function(err,info){
+  if(err){
+    console.log(err);
+    return;
+}
+
+
+console.log("sent : " + info.response);
+})
+res.send("<h2> Your card created succefuly and sent to your email </h2> ")
+})
+
